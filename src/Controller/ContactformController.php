@@ -7,17 +7,17 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class AccueilController extends AbstractController
+class ContactformController extends AbstractController
 {
-    #[Route('/accueil', name: 'app_accueil')]
+    #[Route('/contact', name: 'app_contact')]
     public function index(RequestStack $requestStack): Response
-    {   $identite=[
-        "age","nom","prenom"
-    ];
-       dd ($requestStack->getSession()->set("identite",$identite));
-        return $this->render('accueil/index.html.twig', [
-            'controller_name' => 'AccueilController',
+    {
 
+       dd ($requestStack->getSession()->get("identite"));
+
+        return $this->render('contactform/index.html.twig', [
+            'controller_name' => 'ContactformController',
+            
         ]);
     }
 }
